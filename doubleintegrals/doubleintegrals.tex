@@ -1,0 +1,64 @@
+\documentclass{ximera}
+      
+\title{Double Integrals}
+      
+\begin{document}
+      
+\begin{abstract}
+      
+In this activity, we evaluate integrals over regions in $\mathbb{R}^2$.
+      
+\end{abstract}
+      
+\maketitle
+      
+
+Enter the function $f(x,y)$, and lower / upper bounds of $x,y$ as lowerx, upperx,lowery, uppery.  The SageCell then identifies (possible) values of integrating $f$ over the region.  It also sketches the region and the function.  Care must be given on the bounds of $x, y$ and $z$ in the plots ensure we can actually see this thing properly.
+
+
+\begin{sageCell}
+var('x y z') 
+
+f(x,y)=x^2+y+1
+
+lowerx=-1
+upperx=1
+
+lowery=1-x^2
+uppery=-1+x^2
+
+print('The integral of f over this region is either:')
+integral(integral(f(x,y),x, lowerx, upperx), y, lowery, uppery)
+print('or:')
+integral(integral(f(x,y),y, lowery, uppery), x, lowerx, upperx)
+
+
+
+LX=implicit_plot3d(lowerx==x, (x,-2,2), (y,-2,2), (z,0, 7), opacity=.5, color='red')
+UX=implicit_plot3d(upperx==x, (x,-2,2), (y,-2,2),(z,0,7), opacity=.5, color='red')
+
+LY=implicit_plot3d(lowery==y, (x,-2,2), (y,-2,2),(z,0,7), opacity=.5, color='blue')
+UY=implicit_plot3d(uppery==y, (x,-2,2), (y,-2,2),(z,0,7), opacity=.5, color='blue')
+
+
+PLOTF=plot3d(f,(x,-2,2),(y,-2,2), color='black', opacity=1)
+
+(LX+UX+LY+UY+PLOTF).show()
+\end{sageCell}
+
+
+
+
+
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+\end{document}

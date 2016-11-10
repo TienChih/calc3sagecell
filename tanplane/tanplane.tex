@@ -1,0 +1,72 @@
+\documentclass{ximera}
+      
+\title{Tangent Planes}
+      
+\begin{document}
+      
+\begin{abstract}
+      
+In this activity, we sketch functions of $x$ and $y$ and their tangent planes.
+      
+\end{abstract}
+      
+\maketitle
+      
+
+Enter the function $f(x,y)$ and point of tangency $(a,b)$ as $a$ and $b$.  The SageCell then draws the function, the plane of tangency, and states the $x$ and $y$ derivatives.
+
+
+\begin{sageCell}
+var('x y z') 
+
+
+
+f(x,y)=-x^2+y
+
+a=1
+b=1
+
+
+fx=diff(f, x)
+fy=diff(f, y)
+
+xvec=vector([1,0,fx(a,b)])
+yvec=vector([0,1,fy(a,b)])
+pvec=vector([a,b,f(a,b)])
+
+xvecplot = plot(xvec, start=pvec, color='red')
+yvecplot =plot(yvec, start=pvec, color='orange')
+              
+point = point3d((a,b, f(a,b)) ,size=5,color='black')
+
+tangfunc=fx(a,b)*(x-a)+fy(a,b)*(y-b)+f(a,b)-z
+tangplane=implicit_plot3d(tangfunc==0, (x,-2,2), (y,-2,2),(z,-3,3), opacity=.5, color='green')
+thing=plot3d(f,(x,-2,2),(y,-2,2))
+betterthing=tangplane+thing+point+xvecplot+yvecplot
+
+f
+print('The derivative of f with respect to x is '+`fx`)
+print('The derivative of f with respect to y is '+`fy`)
+print('The plane tangent to z=f at '+`(a,b)`+' is '+`tangfunc`+'=0.')
+
+
+betterthing.show()
+\end{sageCell}
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,63 @@
+\documentclass{ximera}
+      
+\title{Three Points make a Plane}
+      
+\begin{document}
+      
+\begin{abstract}
+      
+In this activity, we determine the plane formed by three non-colinear points.
+      
+\end{abstract}
+      
+\maketitle
+      
+
+Enter  three points as $p1, p2, p3$ below.  The SageCell then determines if the points are colinear, and if not, finds the plane defined by these points.
+
+
+\begin{sageCell}
+x,y,z=var('x','y','z')
+p1=(1,2,3)
+p2=(1,-2,1)
+p3=(0,0,0)
+
+Point1=point3d((p1[0],p1[1],p1[2]),color='red',size=10)
+Point2=point3d((p2[0],p2[1],p2[2]),color='orange',size=10)
+Point3=point3d((p3[0],p3[1],p3[2]),color='green',size=10)
+
+v1=vector([p2[0]-p1[0], p2[1]-p1[1], p2[2]-p1[2]])
+v2=vector([p3[0]-p1[0], p3[1]-p1[1], p3[2]-p1[2]])
+
+A1=plot(v1, start=p1, thickness=2, color='black')
+A2=plot(v2, start=p1, thickness=2, color='black')
+
+if (v1.cross_product(v2)).norm()==0:
+    print('Colinear')
+else:
+    cross=v1.cross_product(v2)
+    f=cross[0]*x+cross[1]*y+cross[2]*z
+    d=f(p1[0],p1[1],p1[2])
+    plane=implicit_plot3d(f==d, (x,-10,10), (y,-10,10),(z,-10,10))
+    crossplot=plot(cross, start=p1, thickness=2, color='green')
+    print 'The equation of this plane is',f,'+',-d,'=0'
+    (plane+Point1+Point2+Point3+A1+A2+crossplot).show()
+\end{sageCell}
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+\end{document}

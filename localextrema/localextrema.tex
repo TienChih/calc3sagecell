@@ -1,0 +1,81 @@
+\documentclass{ximera}
+      
+\title{Local Extrema}
+      
+\begin{document}
+      
+\begin{abstract}
+      
+In this activity, we use the Frobenius method of identifying local extrema.
+      
+\end{abstract}
+      
+\maketitle
+      
+
+Enter the function $f(x,y)$.  The SageCell then identifies the first and second derivatives, identifies the real critical points, and uses the Frobenius method to categorize them as local maxima, minima or saddle points.
+
+
+\begin{sageCell}
+var('x y'); 
+
+f(x,y)= x^3-2*x*y
+
+fx=diff(f,x)
+fy=diff(f,y)
+
+fxx=diff(fx,x)
+fxy=diff(fx,y)
+fyy=diff(fy,y)
+
+f
+print('The derivative fx is:'+`fx`)
+print('The derivative fy is:'+`fy`)
+print('The second derivative fxx is:'+`fxx`)
+print('The second derivative fxy is:'+`fxy`)
+print('The second derivative fyy is:'+`fyy`)
+
+
+cp=solve([fx==0, fy==0], x, y); cp
+
+critpoint= []
+
+for i in range(len(cp)):
+    if cp[i][0].right() in RR:
+        critpoint.append((cp[i][0].right(), cp[i][1].right()))
+        
+print('The critical points are '+`critpoint`)
+
+
+
+for j in range(len(critpoint)):
+    if ((fxx*fyy-fxy^2)(critpoint[j][0], critpoint[j][1])>0) and fxx(critpoint[j][0], critpoint[j][1])>0:
+        critpoint[j]
+        print('is a min')
+    elif ((fxx*fyy-fxy^2)(critpoint[j][0], critpoint[j][1])>0) and fxx(critpoint[j][0], critpoint[j][1])<0:
+        critpoint[j]
+        print('is a max')
+    elif (fxx*fyy-fxy^2)(critpoint[j][0], critpoint[j][1])<0:
+        critpoint[j]
+        print('is a saddle point')
+    else:
+        critpoint[j]
+        print('is something')
+\end{sageCell}
+
+
+
+
+
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+\end{document}

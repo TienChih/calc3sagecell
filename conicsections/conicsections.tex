@@ -1,0 +1,50 @@
+\documentclass{ximera}
+      
+\title{Conic Sections}
+      
+\begin{document}
+      
+\begin{abstract}
+      
+In this activity, we see how conic sections go their name.
+      
+\end{abstract}
+      
+\maketitle
+      
+
+Enter the plane $p$ below as the left hand side of the defining equation $ax+by+cz+d=0$.  The SageCell then draws the standard conic and the plane, showing their intersection.  See how the classic conic sections are created this way.
+
+
+\begin{sageCell}
+var('x','y','z')
+
+p=-1*x+0*y+(1)*z-3
+
+c=x^2+y^2-z^2
+#v=x^2*y - x^2 + y^3 - y^2 - y*z^2 + z^2
+
+conic=implicit_plot3d(c==0, (x,-10,10), (y,-10,10),(z,-10,10), opacity=0.5)
+plane=implicit_plot3d(p==0, (x,-10,10), (y,-10,10),(z,-10,10), opacity=0.5, color='green')
+
+display=conic+plane
+
+display.show()\end{sageCell}
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,53 @@
+\documentclass{ximera}
+      
+\title{Surfaces}
+      
+\begin{document}
+      
+\begin{abstract}
+      
+In this activity, we graph some 3d surfaces.
+      
+\end{abstract}
+      
+\maketitle
+      
+
+Enter the surface as $f$ and plane $p$ below as the left hand side of the defining equation $f=0$ or $p=0$.  The SageCell then draws the surface and the plane, showing their intersection.  Use the range parameter to adjust the scope of the graph.
+
+
+\begin{sageCell}
+var('x','y','z')
+range=7
+
+f=x^2+y^2+z
+p=x-1
+
+
+surface=implicit_plot3d(f==0, (x,-range,range), (y,-range,range),(z,-range,range), opacity=.5)
+
+plane=implicit_plot3d(p==0, (x,-range,range), (y,-range,range),(z,-range,range), opacity=.5, color='red')
+
+thing=surface+plane
+
+
+thing.show()
+\end{sageCell}
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,72 @@
+\documentclass{ximera}
+      
+\title{Product of Vectors}
+      
+\begin{document}
+      
+\begin{abstract}
+      
+In this activity, we find the products of vectors.
+      
+\end{abstract}
+      
+\maketitle
+      
+
+\begin{enumerate}
+\item Dot Product
+
+Enter  vectors as $v1$ and $v2$ below.  The SageCell then evaluates the dot product of these vectors, draws $v1$ as a red vector, $v2$ as a blue vector and  the projection of $v2$ onto $v1$ as a purple vector.
+
+\begin{sageCell}
+v1=vector([2,1,7])
+v2=vector([3,1,-2])
+
+DISPLAY=plot(v1, color='red', thickness=2)+plot(v2, color='blue', thickness=2)
+
+v2onv1=dotprod/v1.norm()
+v2projv1=v2onv1*(1/v1.norm())*v1
+DISPLAYPROJ=DISPLAY+plot(v2projv1, color='purple', thickness=3)
+
+print('The dot product of '+`v1`+' and '+`v2`+' is '+`v2projv1`)
+DISPLAYPROJ.show()
+\end{sageCell}
+
+
+\item Cross Product
+
+Enter  vectors as $v1$ and $v2$ below.  The SageCell then evaluates the dot product of these vectors, draws $v1$ as a red vector, $v2$ as a blue vector and  the cross product $v1\times v2$ as a green vector.
+
+
+\begin{sageCell}
+v1=vector([2,1,7])
+v2=vector([3,1,-2])
+
+DISPLAY=plot(v1, color='red', thickness=2)+plot(v2, color='blue', thickness=2)
+
+v1crossv2=v1.cross_product(v2)
+
+DISPLAYCROSS=DISPLAY+plot(v1crossv2, color='green', thickness=3)
+
+print('The cross product of '+`v1`+' and '+`v2`+' is '+`v1crossv2`)
+DISPLAYCROSS.show()
+\end{sageCell}
+
+
+
+
+\end{enumerate}
+
+
+ 
+ 
+ 
+ 
+      
+
+
+
+
+
+
+\end{document}
